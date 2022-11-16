@@ -1,0 +1,89 @@
+.groups__container {
+  width: 100%;
+}
+.groups__container2 {
+  display: flex;
+  width: 100%;
+  height: 600px;
+}
+.date {
+  width: 10%;
+}
+.date p {
+  padding: 8px 0;
+  text-align: center;
+}
+.time {
+  width: 10%;
+}
+.time p {
+  padding: 8px 0;
+  text-align: center;
+}
+.games {
+  width: 70%;
+}
+.games p {
+  padding: 8px 0;
+  text-align: center;
+}
+.stadium {
+  width: 10%;
+}
+.stadium p {
+  padding: 8px 0;
+  text-align: center;
+}
+
+.flags {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flags img {
+  width: 50px;
+  padding-bottom: 20px;
+}
+.games__container {
+  display: flex;
+  flex-direction: row;
+}
+.team__name {
+  width: 20%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-items: flex-start;
+}
+.team__name p {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 0;
+}
+.team__score {
+  width: 10%;
+  align-items: center;
+  justify-content: center;
+}
+.team__score p {
+  text-align: center;
+  margin-top: 0;
+}
+.separator p {
+  margin-top: 0;
+}
+.games__container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.container__title {
+  text-align: center;
+}
+.groups__title {
+  color: #8d1c3d;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px 40px;
+}

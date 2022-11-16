@@ -1,0 +1,70 @@
+.loginContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: "red";
+  flex-direction: column;
+  width: 400px;
+  height: 450px;
+  border-radius: 8px;
+  background-color: #63a194;
+}
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #8d1c3d;
+  margin-bottom: 0;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 16px;
+}
+.label {
+  color: #8d1c3d;
+  font-weight: bold;
+}
+.field {
+  border-radius: 8px;
+  color: black;
+  border-color: #8d1c3d;
+  background-color: whitesmoke;
+  outline-style: none;
+  height: 30px;
+  font-size: 13px;
+  width: 250px;
+  text-align: center;
+  border-style: none;
+}
+.text {
+  color: white;
+}
+.button {
+  color: white;
+  border-radius: 10px;
+  margin-top: 8px;
+  background-color: #8d2142b9;
+  padding: 5px;
+  text-align: center;
+  width: 150px;
+  border-style: none;
+  padding: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #8d1c3d;
+  transform: scale(1.1);
+}
