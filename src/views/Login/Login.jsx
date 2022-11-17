@@ -1,8 +1,8 @@
 import React from 'react'
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useState, useRef } from 'react';
 import axios from "axios";
 import "./Login.css"
 
@@ -89,8 +89,17 @@ export const Login = (props) => {
                     <ErrorMessage name="password" className='text-white'/>
                 </div>
 
-                <button type='submit' className="button">Ingresar</button>
-                <p className='text'>¿No tienes cuenta? <Link to='/register'><span className='text-pink-700'>Crear Cuenta</span></Link></p>
+                <button type='submit' className="button">
+                  Ingresar
+                </button>
+                <p className='text'>
+                  ¿No tienes cuenta? 
+                  <Link to='/register'>
+                    <span className='text-pink-700'>
+                      Crear Cuenta
+                    </span>
+                  </Link>
+                </p>
             </Form>
         </Formik>
 
