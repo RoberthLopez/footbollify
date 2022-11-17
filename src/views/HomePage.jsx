@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <>
       <div style={{display:"flex", justifyContent:"center", width:"100%"}}>
-        <div style={{width:"80%", justifyContent:"center"}}>
+        <div style={{width:"80%", justifyContent:"center", marginTop:30}}>
           <CarouselUi />
         </div>
       </div>
