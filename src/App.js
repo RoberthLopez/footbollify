@@ -4,6 +4,7 @@ import HomePage from './views/HomePage';
 import Nav from './components/Nav';
 import { Login } from './views/Login/Login';
 import Register from './views/Register/Register';
+import NextGames from './views/NextGames/NextGames';
 import { createTheme, ThemeProvider } from '@mui/material';
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
           <Route path='/' element={<HomePage />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
+          <Route path='/proximosjuegos' element={<NextGames />} />
+          <Route path='/games/:gameid' element={<NextGames />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
