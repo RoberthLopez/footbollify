@@ -2,14 +2,16 @@ import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import "./Login.css"
 
 export const Login = () => {
 
   return (
     <div className='loginContainer'>
-        <div className='container2'>
-            <h3 className='title'>
+        <div className='container'>
+            <h3 className='titleLogin'>
                 Inicia Sesión
             </h3>
             <Formik
@@ -24,20 +26,22 @@ export const Login = () => {
                 onSubmit={(values) => {
                 }}
             >
-            <Form className='form'>
-                <label htmlFor="email" className='label'>Correo</label>
+            <Form className='formLogin'>
+                <label htmlFor="email" className='labelLogin'>Correo</label>
                 <Field name="email" type="email" className="field" />
+                <EmailOutlinedIcon className='emailIconLogin'/>
                 <div className='text'>
                     <ErrorMessage name="email" />
                 </div>
         
-                <label htmlFor="password" className='label'>Contraseña</label>
+                <label htmlFor="password" className='labelLogin'>Contraseña</label>
                 <Field name="password" type="password" className="field" />
+                <HttpsOutlinedIcon className='passwordIconLogin'/>
                 <div className='text'>
                     <ErrorMessage name="password" className='text-white'/>
                 </div>
 
-                <button type="submit" className="button">Ingresar</button>
+                <button type="submit" className="buttonLogin">Ingresar</button>
                 <p className='text'>¿No tienes cuenta? <Link to='/register'><span className='text-pink-700'>Crear Cuenta</span></Link></p>
             </Form>
         </Formik>
