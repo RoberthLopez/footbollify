@@ -1,10 +1,53 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import axios from "axios";
 import "./Login.css"
 
-export const Login = () => {
+export const Login = (props) => {
+
+    const [loginForm, setloginForm] = useState({
+        email: "",
+        password: ""
+      })
+    const form = useRef(null)
+
+    function logMeIn(event) {
+        axios({
+          method: "POST",
+          url:"/token",
+          data:{
+            email: loginForm.email,
+            password: loginForm.password
+           }
+        })
+        .then((response) => {
+          props.setToken(response.data.access_token)
+        }).catch((error) => {
+          if (error.response) {
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+            }
+        })
+  
+        setloginForm(({
+          email: "",
+          password: ""}))
+  
+        event.preventDefault()
+      }
+
+    function handleSubmit(event){
+      const formData = new FormData(form.current)
+      setloginForm({
+        'email':formData.get('email'),
+        'password':formData.get('password')
+      })
+      console.log(loginForm)
+    }
 
   return (
     <div className='loginContainer'>
@@ -21,23 +64,29 @@ export const Login = () => {
                 .max(15, 'Máximo 20 caracteres')
                 .required('La contraseña es requerida')
                 })}
-                onSubmit={(values) => {
-                }}
+                onSubmit={handleSubmit}
+                
             >
-            <Form className='form'>
+            <Form className='form' ref={form}>
                 <label htmlFor="email" className='label'>Correo</label>
-                <Field name="email" type="email" className="field" />
+                <Field 
+                    name="email" 
+                    type="email" 
+                    className="field" />
                 <div className='text'>
                     <ErrorMessage name="email" />
                 </div>
         
                 <label htmlFor="password" className='label'>Contraseña</label>
-                <Field name="password" type="password" className="field" />
+                <Field
+                    name="password" 
+                    type="password"
+                    className="field" />
                 <div className='text'>
                     <ErrorMessage name="password" className='text-white'/>
                 </div>
 
-                <button type="submit" className="button">Ingresar</button>
+                <button type='submit' className="button">Ingresar</button>
                 <p className='text'>¿No tienes cuenta? <Link to='/register'><span className='text-pink-700'>Crear Cuenta</span></Link></p>
             </Form>
         </Formik>

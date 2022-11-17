@@ -12,11 +12,12 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import axios from "axios";
 
 const pages = ['Grupo A', 'Grupo B', 'Grupo C', 'Grupo D'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -34,6 +35,21 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  function logMeOut() {
+    axios({
+      method: "POST",
+      url:"/logout",
+    })
+    .then((response) => {
+       props.token()
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })}
 
   return (
     <AppBar position="static">
@@ -152,6 +168,9 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+              <button onClick={logMeOut}> 
+                Logout
+              </button>
             </Menu>
           </Box>
         </Toolbar>
