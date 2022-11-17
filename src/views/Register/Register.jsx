@@ -1,9 +1,50 @@
 import React from 'react'
+import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import axios from "axios";
 
-const Register = () => {
+const Register = (props) => {
+
+    const [registerForm, setRegisterForm] = useState({
+        email: "",
+        password: ""
+      })
+    const form = useRef(null)
+
+    function signMeIn(event) {
+        console.log(registerForm)
+        axios({
+          method: "POST",
+          url:"/signIn",
+          data:{
+            email: registerForm.email,
+            password: registerForm.password
+           }
+        })
+        .then((response) => {
+          props.setToken(response.data.access_token)
+        }).catch((error) => {
+          if (error.response) {
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+            }
+        })
+  
+      }
+
+    function handleSubmit(event){
+      const formData = new FormData(form.current)
+      setRegisterForm({
+        'email':formData.get('email'),
+        'password':formData.get('password')
+      })
+      //console.log(loginForm)
+      signMeIn(event)
+    }
+
 return (
   <div className='registerContainer'>
       <div className='container2'>
@@ -18,10 +59,10 @@ return (
           .max(15, 'Máximo 20 caracteres')
           .required('La contraseña es requerida')
       })}
-      onSubmit={(values) => {
-      }}
+      onSubmit={handleSubmit}
       >
-      <Form className='form'>
+
+      <Form className='form' ref={form}>
           <label htmlFor="email" className='label'>Correo</label>
           <Field name="email" type="email" className="field" />
           <div className='text'>
@@ -39,7 +80,14 @@ return (
           <button type="submit" className="button">
             Ingresar
           </button>
-          <p className='text'>¿Ya tienes cuenta? <Link to='/login'><span className='text-pink-700'>Iniciar Sesion</span></Link></p>
+          <p className='text'>¿
+            Ya tienes cuenta? 
+            <Link to='/login'>
+                <span className='text-pink-700'>
+                    Iniciar Sesion
+                </span>
+            </Link>
+          </p>
       </Form>
       </Formik>
 
