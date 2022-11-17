@@ -15,6 +15,7 @@ export const Login = (props) => {
     const form = useRef(null)
 
     function logMeIn(event) {
+        console.log(loginForm)
         axios({
           method: "POST",
           url:"/token",
@@ -33,11 +34,11 @@ export const Login = (props) => {
             }
         })
   
-        setloginForm(({
-          email: "",
-          password: ""}))
+        // setloginForm(({
+        //   email: "",
+        //   password: ""}))
   
-        event.preventDefault()
+        //event.preventDefault()
       }
 
     function handleSubmit(event){
@@ -46,9 +47,11 @@ export const Login = (props) => {
         'email':formData.get('email'),
         'password':formData.get('password')
       })
-      console.log(loginForm)
+      //console.log(loginForm)
+      logMeIn(event)
     }
 
+    
   return (
     <div className='loginContainer'>
         <div className='container2'>
@@ -69,7 +72,7 @@ export const Login = (props) => {
             >
             <Form className='form' ref={form}>
                 <label htmlFor="email" className='label'>Correo</label>
-                <Field 
+                <Field
                     name="email" 
                     type="email" 
                     className="field" />

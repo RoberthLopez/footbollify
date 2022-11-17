@@ -12,34 +12,27 @@ function App() {
 
   const { token, removeToken, setToken } = useToken();
 
-  // return (
-  //   <BrowserRouter >
-  //     <Nav />
-  //     <Routes>
-  //       <Route path='/' element={<HomePage />}/>
-  //       <Route path='/login' element={<Login />}/>
-  //       <Route path='/register' element={<Register />}/>
-  //       <Route path='/profile' element={<Profile />}/>
-  //     </Routes>
-  //   </BrowserRouter>
-  // );
-
-
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Nav token={removeToken}/>
-        {!token && token!=="" &&token!== undefined?  
-        <Login setToken={setToken} />
-        :(
-          <>
-            <Routes>
-              <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
-            </Routes>
-          </>
-        )}
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <div className="App">
+          <Nav token={removeToken}/>
+          <Routes>
+            <Route path='/' element={<HomePage />}/>
+            <Route path='/login' element={<Login />}/>
+            <Route path='/register' element={<Register />}/>
+          </Routes>
+          {!token && token!=="" &&token!== undefined?  
+          <Login setToken={setToken} />
+          :(
+            <>
+              <Routes>
+                <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
+              </Routes>
+            </>
+          )}
+          
+        </div>
+      </BrowserRouter>
   );
 }
 
