@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import './GameDescription.css'
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import { useParams } from 'react-router-dom';
-import useGetGames from '../../hooks/useGetNextGames';
 import axios from 'axios';
 
 const GameDescription = () => {

@@ -11,7 +11,7 @@ const GameList = ({matchs, day}) => {
           <h2 className='gamelist__date'>Fase de Grupos - {matchs[0].local_date}</h2>
           <div className='gamelist__container2'>
             {matchs.map((match, i)=>(
-              <Link key={match.id} className='gamelist__link' to={`/proximosjuegos/${day}/${i}`}>
+              <Link key={`${day}${i}`} className='gamelist__link' to={`/proximosjuegos/${day}/${i}`}>
                 <GameCard matchs={match} />
               </Link>
             ))}
