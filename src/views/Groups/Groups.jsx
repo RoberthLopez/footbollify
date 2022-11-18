@@ -8,17 +8,12 @@ const Groups = () => {
     const loadGroups = async () => {
         try {
             const data = await axios({method: "GET", url:"/standings"})
-            console.log(data.data.data)
             setApiData(data.data.data)
-            console.log(apiData)
             
         } catch (error) {
             console.log(error)
         }
-        
-
     }
-
 
     useEffect(() => {
         loadGroups()

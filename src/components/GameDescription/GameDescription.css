@@ -4,16 +4,17 @@
   display: flex;
   justify-content: center;
   color: whitesmoke;
+  margin-top: 30px;
 }
 .gamedescription__container--1 {
   width: 70%;
-  background-color: #63a194;
+  background-color: #8d1c3ede;
   border-radius: 10px;
   padding: 30px;
 }
-.gamedescription__header{
-    display: flex;
-    justify-content: space-between;
+.gamedescription__header {
+  display: flex;
+  justify-content: space-between;
 }
 .gamedescription__date {
   font-weight: bold;
@@ -51,7 +52,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #8d1c3d;
+  background-color: #8d1c3ed2;
   padding: 10px;
   border-radius: 10px;
   height: 280px;
@@ -92,38 +93,38 @@
   align-items: center;
 }
 .vote__container {
-    display: flex;
-    width: 90%;
-    justify-content: space-between;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
 }
 .vote__container--inner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 .vote__icon {
-    font-size: 50px;
+  font-size: 50px;
 }
 .gamedescription__title {
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
 }
 .gamedescription__team--name {
-    font-size: 15px;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
 }
 
 @media (max-width: 425px) {
-    .gamedescription__container--detail {
-        flex-direction: column;
-        height: 250px;
-    }
-    .gamedescription__container--1 {
-        height: 670px;
-    }
+  .gamedescription__container--detail {
+    flex-direction: column;
+    height: 250px;
+  }
+  .gamedescription__container--1 {
+    height: 670px;
+  }
 }

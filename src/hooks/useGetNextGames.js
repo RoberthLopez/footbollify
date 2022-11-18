@@ -5,8 +5,13 @@ const useGetGames = (API) => {
     const [games, setGames]=useState([]);
 	useEffect(() => {
         async function fetchData() {
-            const response = await axios.get(API); //request
-            setGames(response.data);
+            try {
+                const response = await axios.get(API); //request
+                setGames(response.data);                
+            } catch (error) {
+                console.error(error)
+            }
+
         }
         fetchData();
     }, []);
