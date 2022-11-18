@@ -4,10 +4,12 @@ import Nav from './components/Nav';
 import HomePage from './views/HomePage';
 import { Login } from './views/Login/Login';
 import Register from './views/Register/Register';
+import NextGames from './views/NextGames/NextGames';
 import Profile from './views/Profile/Profile';
 import NotFound from './views/NotFound/NotFound';
 import useToken from './hooks/useToken';
 import './App.css';
+import MyStats from './views/MyStats/MyStats';
 
 function App() {
   const theme = createTheme({
@@ -33,6 +35,9 @@ function App() {
               <Route path='/' element={<HomePage />}/>
               <Route path='/login' element={<Login />}/>
               <Route path='/register' element={<Register />}/>
+          <Route path='/proximosjuegos' element={<NextGames />} />
+          <Route path='/estadisticas' element={<MyStats />} />
+          <Route path='/games/:gameid' element={<NextGames />} />
               {!token && token!=="" ?  //Si no esta logeado, y quiere entrar a profile
                 (<Route path="/profile" element={<Login setToken={setToken}/>}/>)  //pide login
               : (

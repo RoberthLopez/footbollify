@@ -13,7 +13,8 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
-const pages = ['Grupos', 'Proximos juegos'];
+const pages = [{name:'Grupos', path:"/groups"}, {name:'Proximos juegos', path:"/proximosjuegos"}];
+console.log(pages.map((page)=> page.name ))
 
 function ResponsiveAppBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -94,9 +95,11 @@ function ResponsiveAppBar(props) {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+                <Link key={page.path} to={page.path} style={{textDecoration:"none"}}>
+                  <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -121,13 +124,15 @@ function ResponsiveAppBar(props) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link key={page.path} to={page.path} style={{textDecoration:"none"}}>
+                <Button
+                  key={page.name}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
 
