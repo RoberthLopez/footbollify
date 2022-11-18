@@ -4,7 +4,9 @@ import HomePage from './views/HomePage';
 import Nav from './components/Nav';
 import { Login } from './views/Login/Login';
 import Register from './views/Register/Register';
-import { createTheme, ThemeProvider } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material';import Profile from './views/Profile/Profile';
+import useToken from './hooks/useToken'
+
 
 function App() {
   const theme = createTheme({
@@ -18,16 +20,31 @@ function App() {
       }
     }
   })
+
+  const { token, removeToken, setToken } = useToken();
+
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter >
+        <BrowserRouter>
+        <div className="App">
         
-        <Nav />
-        <Routes>
-          <Route path='/' element={<HomePage />}/>
-          <Route path='/login' element={<Login />}/>
-          <Route path='/register' element={<Register />}/>
-        </Routes>
+            <Nav token={removeToken}/>
+            <Routes>
+              <Route path='/' element={<HomePage />}/>
+              <Route path='/login' element={<Login />}/>
+              <Route path='/register' element={<Register />}/>
+            </Routes>
+            {!token && token!=="" &&token!== undefined?  
+          <Login setToken={setToken} />
+          :(
+            <>
+              <Routes>
+                <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
+              </Routes>
+            </>
+          )}
+          
+        </div>
       </BrowserRouter>
     </ThemeProvider>
   );
