@@ -7,9 +7,11 @@ import Register from './views/Register/Register';
 import NextGames from './views/NextGames/NextGames';
 import Profile from './views/Profile/Profile';
 import NotFound from './views/NotFound/NotFound';
+import MyStats from './views/MyStats/MyStats';
+import Vote from './views/Vote/Vote';
 import useToken from './hooks/useToken';
 import './App.css';
-import MyStats from './views/MyStats/MyStats';
+
 import Groups from './views/Groups/Groups';
 
 function App() {
@@ -39,6 +41,7 @@ function App() {
               <Route path='/proximosjuegos' element={<NextGames />} />
               <Route path='/estadisticas' element={<MyStats />} />
               <Route path='/games/:gameid' element={<NextGames />} />
+              <Route path='/vote' element={<Vote />}/>
               {!token && token!=="" ?  //Si no esta logeado, y quiere entrar a profile
                 (<Route path="/profile" element={<Login setToken={setToken}/>}/>)  //pide login
               : (
