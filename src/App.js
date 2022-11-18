@@ -32,16 +32,13 @@ function App() {
               <Route path='/' element={<HomePage />}/>
               <Route path='/login' element={<Login />}/>
               <Route path='/register' element={<Register />}/>
-            </Routes>
-            {!token && token!=="" &&token!== undefined ?  //Si no esta logeado, y quiere entrar a profile
-              <Login setToken={setToken} />  //pide login
+              {!token && token!=="" ?  //Si no esta logeado, y quiere entrar a profile
+                (<Route path="/profile" element={<Login setToken={setToken}/>}/>)  //pide login
               : (
-                <>
-                   <Routes> {/*sino, va a la ruta de profile */}
-                    <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
-                  </Routes>
-                </>
+                  <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
                 )}
+            </Routes>
+            
         </div>
       </BrowserRouter>
     </ThemeProvider>
