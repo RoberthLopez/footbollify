@@ -2,7 +2,8 @@ import React from 'react'
 import "./GameList.css"
 import GameCard from '../GameCard/GameCard'
 
-const GameList = () => {
+const GameList = (games) => {
+  
   return (
     <div className='gamelist__container'>
         <h2 className='gamelist__date'>Fase de Grupos - Dom, 20/11</h2>
