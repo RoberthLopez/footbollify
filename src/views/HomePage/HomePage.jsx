@@ -12,7 +12,7 @@ const HomePage = () => {
                 <button className='register__button'>Registrate YA</button>
               </Link>
             </div>
-            <img className='homepage__teams--img' src="https://img.freepik.com/vector-premium/copa-mundial-fifa-qatar-2022-logotipo-estilizado-vector-ilustracion-aislada-futbol_633888-126.jpg?w=1060" alt="equipos"/>            
+            <img className='homepage__teams--img' src="https://i.ibb.co/cbSndhW/copa-mundial-fifa-qatar-2022-logotipo-estilizado-vector-ilustracion-aislada-futbol-633888-126.jpg" alt="equipos"/>            
           </div>
           <div className='homepage__compete--container'>
             <img className='homepage__teams--img' src="https://pbs.twimg.com/media/FVPPIJxXoAE0elF?format=png&name=large" alt="equipos"/>
@@ -30,10 +30,10 @@ const HomePage = () => {
                 Cuando aciertas sumas puntos. Obten los primeros lugares del ranking para presumirlo con tus amigos. 
               </p>
             </div>  
-            <img className='homepage__teams--img' src="https://img.freepik.com/vector-gratis/monopolista-que-posee-80-ciento-participacion-mercado_3446-649.jpg?w=1060&t=st=1668750575~exp=1668751175~hmac=7bfc10cf5ffc2a8e36e2deb92473e8a597f9d6d6e03b8129dff70e48a8f11583" alt="equipos"/>        
+            <img className='homepage__teams--img' src="https://i.ibb.co/Dg4Cv55/monopolista-que-posee-80-ciento-participacion-mercado-3446-649.jpg" alt="equipos"/>        
           </div>
           <div className='homepage__compete--container'>
-            <img className='homepage__teams--img' src="https://img.freepik.com/vector-gratis/ilustracion-plana-campeonato-mundial-futbol_23-2149729264.jpg?w=1060&t=st=1668752288~exp=1668752888~hmac=ea9ad1ccf9dc04181dac4978115513e77143e7002685e1b10c7e66138dd42c84" alt="equipos"/>
+            <img className='homepage__teams--img' src="https://i.ibb.co/bvM1X3Y/ilustracion-plana-campeonato-mundial-futbol-23-2149729264.jpg" alt="equipos"/>
             <div className='homepage__text--container'>
               <h2 className='homepage__text--title'>¡Sigue con nosotros cada partido y no te pierdas ni un solo gol!</h2>
               <p className='homepage__text--size'>
