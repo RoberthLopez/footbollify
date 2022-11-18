@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
-import HomePage from './views/HomePage';
 import Nav from './components/Nav';
+import HomePage from './views/HomePage';
 import { Login } from './views/Login/Login';
 import Register from './views/Register/Register';
 import Profile from './views/Profile/Profile';
+import NotFound from './views/NotFound/NotFound';
 import useToken from './hooks/useToken';
 import './App.css';
 
@@ -37,6 +38,7 @@ function App() {
               : (
                   <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
                 )}
+              <Route path="*" element={<NotFound />} />
             </Routes>
             
         </div>
