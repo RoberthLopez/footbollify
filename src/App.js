@@ -10,6 +10,7 @@ import NotFound from './views/NotFound/NotFound';
 import useToken from './hooks/useToken';
 import './App.css';
 import MyStats from './views/MyStats/MyStats';
+import Groups from './views/Groups/Groups';
 
 function App() {
   const theme = createTheme({
@@ -44,6 +45,7 @@ function App() {
                   <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
                 )}
               <Route path="*" element={<NotFound />} />
+              <Route path="/groups" element={<Groups />} />
             </Routes>
             
         </div>
