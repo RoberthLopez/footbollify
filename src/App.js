@@ -1,12 +1,12 @@
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material';
 import HomePage from './views/HomePage';
 import Nav from './components/Nav';
 import { Login } from './views/Login/Login';
 import Register from './views/Register/Register';
-import { createTheme, ThemeProvider } from '@mui/material';import Profile from './views/Profile/Profile';
-import useToken from './hooks/useToken'
-
+import Profile from './views/Profile/Profile';
+import useToken from './hooks/useToken';
+import './App.css';
 
 function App() {
   const theme = createTheme({
@@ -27,7 +27,6 @@ function App() {
     <ThemeProvider theme={theme}>
         <BrowserRouter>
         <div className="App">
-        
             <Nav token={removeToken}/>
             <Routes>
               <Route path='/' element={<HomePage />}/>
@@ -35,15 +34,14 @@ function App() {
               <Route path='/register' element={<Register />}/>
             </Routes>
             {!token && token!=="" &&token!== undefined?  
-          <Login setToken={setToken} />
-          :(
-            <>
-              <Routes>
-                <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
-              </Routes>
-            </>
-          )}
-          
+              <Login setToken={setToken} />
+              :(
+                <>
+                  <Routes>
+                    <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
+                  </Routes>
+                </>
+                )}
         </div>
       </BrowserRouter>
     </ThemeProvider>
