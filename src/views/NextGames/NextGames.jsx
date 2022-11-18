@@ -6,11 +6,7 @@ const API='/matchs/bymatchday';
 
 const NextGames = () => {
   const games = useGetGames(API)
-  console.log(games)
-  //const dayone = games.data.filter(({matchday}) => matchday === '1');
-  //console.log(dayone)
-  //const { data } = games
-  //console.log(dayone)
+  //console.log(games)
   return (
     <>
         {games.map(matchs=>(
