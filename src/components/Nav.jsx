@@ -9,11 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
-const pages = [{name:'Grupos', path:"/groups"}, {name:'Proximos juegos', path:"/proximosjuegos"}];
+const pages = [{name:'Grupos', path:"/groups"}, {name:'Proximos juegos', path:"/proximosjuegos"}, {name:'Estadisticas', path:"/estadisticas"}];
 console.log(pages.map((page)=> page.name ))
 
 function ResponsiveAppBar(props) {
@@ -46,7 +46,7 @@ function ResponsiveAppBar(props) {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <SportsSoccerIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -103,7 +103,7 @@ function ResponsiveAppBar(props) {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <SportsSoccerIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -120,7 +120,6 @@ function ResponsiveAppBar(props) {
               textDecoration: 'none',
             }}
           >
-            LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

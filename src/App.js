@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
 import Nav from './components/Nav';
-import HomePage from './views/HomePage';
+import HomePage from './views/HomePage/HomePage';
 import { Login } from './views/Login/Login';
 import Register from './views/Register/Register';
 import NextGames from './views/NextGames/NextGames';
@@ -35,9 +35,9 @@ function App() {
               <Route path='/' element={<HomePage />}/>
               <Route path='/login' element={<Login />}/>
               <Route path='/register' element={<Register />}/>
-          <Route path='/proximosjuegos' element={<NextGames />} />
-          <Route path='/estadisticas' element={<MyStats />} />
-          <Route path='/games/:gameid' element={<NextGames />} />
+              <Route path='/proximosjuegos' element={<NextGames />} />
+              <Route path='/estadisticas' element={<MyStats />} />
+              <Route path='/games/:gameid' element={<NextGames />} />
               {!token && token!=="" ?  //Si no esta logeado, y quiere entrar a profile
                 (<Route path="/profile" element={<Login setToken={setToken}/>}/>)  //pide login
               : (

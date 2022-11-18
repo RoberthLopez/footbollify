@@ -11,11 +11,10 @@
   align-items: center;
   flex-direction: column;
   width: 400px;
-  height: 550px;
+  height: 450px;
   border-radius: 5px;
-  background-color: #8A1538;
+  background-color: #8a1538;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.479);
-  
 }
 .titleLogin {
   font-size: 36px;
@@ -34,17 +33,17 @@
   margin-top: 16px;
   padding: 16px;
 }
-.emailIconLogin{
+.emailIconLogin {
   position: absolute;
   color: #464646;
   top: 52px;
   left: 48px;
 }
-.passwordIconLogin{
+.passwordIconLogin {
   position: absolute;
   color: #464646;
-  top: 135px;
-  left: 48px;
+  top: 4px;
+  left: 10px;
 }
 .labelLogin {
   color: #ffffff;
@@ -54,16 +53,18 @@
   border-radius: 8px;
   color: black;
   border-color: #ffffff;
-  background-color: #8A1538;
+  background-color: #8a1538;
   outline-style: none;
   height: 30px;
   font-size: 13px;
   width: 250px;
   text-align: center;
   border-style: none;
+  position: relative;
 }
 .text {
   color: white;
+  text-decoration: ;
 }
 .buttonLogin {
   color: rgba(255, 255, 255, 0.897);
@@ -78,7 +79,6 @@
   transition: 0.5s;
   cursor: pointer;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.479);
-
 }
 .buttonLogin:hover {
   background-color: #ffffff7b;

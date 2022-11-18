@@ -1,0 +1,85 @@
+.homepage__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.homepage__carousel {
+  width: 90%;
+  justify-content: center;
+  margin-top: 30px;
+}
+.homepage__team--container {
+    color: whitesmoke;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
+.homepage__teams--img {
+    width: 50%;
+}
+.homepage__text--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+.homepage__title {
+    font-size: 50px;
+    color: #8a1538;
+    text-align: start;
+
+}
+.homepage__title--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px;
+}
+.homepage__compete--container {
+    color: whitesmoke;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #8a1538;
+}
+.register__button {
+    background-color: #8a1538;
+    color: whitesmoke;
+    padding: 10px;
+    height: 40px;
+    width: 150px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    border-style: none;
+}
+.register__button:hover {
+    transform: scale(1.1);
+}
+.homepage__text--title {
+    font-size: 46px;
+    color: whitesmoke;
+
+}
+.homepage__text--title2 {
+    color: #8a1538;
+    font-size: 46px;
+
+}
+.homepage__text--container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    color: #8a1538;
+}
+.homepage__text--size {
+    font-size: 22px;
+}
+

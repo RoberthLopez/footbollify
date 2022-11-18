@@ -75,8 +75,10 @@ return (
           </div>
   
           <label htmlFor="password" className='label'>Contraseña</label>
-          <Field name="password" type="password" className="field" />
-          <HttpsOutlinedIcon className='passwordIconRegister'/>
+          <div style={{position: "relative"}}>
+            <Field name="password" type="password" className="field" />
+            <HttpsOutlinedIcon className='passwordIconRegister'/>
+          </div>
           <div className='text'>
               <ErrorMessage name="password"/>
           </div>
@@ -86,11 +88,11 @@ return (
           <button type="submit" className="button">
             Ingresar
           </button>
-          <p className='text'>¿
-            Ya tienes cuenta? 
-            <Link to='/login'>
-                <span className='text-pink-700'>
-                    Iniciar Sesion
+          <p className='text'>
+            ¿Ya tienes cuenta? 
+            <Link className='text' to='/login'>
+                <span className='text'>
+                    Inicia Sesion
                 </span>
             </Link>
           </p>

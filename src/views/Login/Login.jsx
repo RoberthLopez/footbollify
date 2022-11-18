@@ -84,17 +84,19 @@ export const Login = (props) => {
                 </div>
         
                 <label htmlFor="password" className='labelLogin'>Contraseña</label>
-                <Field
-                    name="password" 
-                    type="password"
-                    className="field" />
-                <HttpsOutlinedIcon className='passwordIconLogin'/>
+                <div style={{position: "relative"}}>
+                  <Field
+                      name="password" 
+                      type="password"
+                      className="field" />
+                  <HttpsOutlinedIcon className='passwordIconLogin'/>
+                </div>
                 <div className='text'>
                     <ErrorMessage name="password" className='text-white'/>
                 </div>
 
                 <button type="submit" className="buttonLogin">Ingresar</button>
-                <p className='text'>¿No tienes cuenta? <Link to='/register'><span className='text-pink-700'>Crear Cuenta</span></Link></p>
+                <p className='text'>¿No tienes cuenta? <Link className='text' to='/register'><span className='text-pink-700'>Crear Cuenta</span></Link></p>
             </Form>
         </Formik>
 
