@@ -132,46 +132,29 @@ function ResponsiveAppBar(props) {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-              <Link to="/login" style={{textDecoration:"none"}}>
-                <Button sx={{ marginLeft: "auto" }} variant="contained">
-                  Logearse
+              
+              {localStorage.getItem('token') ? 
+              <Button onClick={logMeOut}
+                        sx={{ marginLeft: "10px" }} 
+                        variant="contained">                
+                  Logout                               
                 </Button>
-              </Link>
-              <Link to="/register" style={{textDecoration:"none"}}>
-                <Button sx={{ marginLeft: "10px" }} variant="contained">                
-                  Registrarse                               
-                </Button>
-              </Link>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-              <button onClick={logMeOut}> 
-                Logout
-              </button>
-            </Menu>
+              : <div>
+                  <Link to="/login" style={{textDecoration:"none"}}>
+                    <Button 
+                            sx={{ marginLeft: "auto" }} 
+                            variant="contained">
+                      Logearse
+                    </Button>
+                  </Link>
+                  <Link to="/register" style={{textDecoration:"none"}}>
+                    <Button 
+                            sx={{ marginLeft: "10px" }} 
+                            variant="contained">                
+                      Registrarse                               
+                    </Button>
+                  </Link>
+                </div>}
           </Box>
         </Toolbar>
       </Container>

@@ -1,12 +1,13 @@
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './views/HomePage';
+import { createTheme, ThemeProvider } from '@mui/material';
 import Nav from './components/Nav';
+import HomePage from './views/HomePage';
 import { Login } from './views/Login/Login';
 import Register from './views/Register/Register';
-import { createTheme, ThemeProvider } from '@mui/material';import Profile from './views/Profile/Profile';
-import useToken from './hooks/useToken'
-
+import Profile from './views/Profile/Profile';
+import NotFound from './views/NotFound/NotFound';
+import useToken from './hooks/useToken';
+import './App.css';
 
 function App() {
   const theme = createTheme({
@@ -27,23 +28,19 @@ function App() {
     <ThemeProvider theme={theme}>
         <BrowserRouter>
         <div className="App">
-        
             <Nav token={removeToken}/>
             <Routes>
               <Route path='/' element={<HomePage />}/>
               <Route path='/login' element={<Login />}/>
               <Route path='/register' element={<Register />}/>
+              {!token && token!=="" ?  //Si no esta logeado, y quiere entrar a profile
+                (<Route path="/profile" element={<Login setToken={setToken}/>}/>)  //pide login
+              : (
+                  <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
+                )}
+              <Route path="*" element={<NotFound />} />
             </Routes>
-            {!token && token!=="" &&token!== undefined?  
-          <Login setToken={setToken} />
-          :(
-            <>
-              <Routes>
-                <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
-              </Routes>
-            </>
-          )}
-          
+            
         </div>
       </BrowserRouter>
     </ThemeProvider>

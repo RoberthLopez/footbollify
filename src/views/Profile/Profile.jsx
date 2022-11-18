@@ -20,7 +20,8 @@ function Profile(props) {
       res.access_token && props.setToken(res.access_token)
       setProfileData(({
         profile_name: res.name,
-        about_me: res.about}))
+        about_me: res.about
+      }))
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
