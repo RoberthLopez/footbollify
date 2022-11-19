@@ -9,7 +9,7 @@ const NextGames = () => {
   return (
     <>
         {games.map((matchs, i)=>(
-					<GameList matchs={matchs} key={matchs[0].id} day={i}/>
+					<GameList matchs={matchs} key={matchs[0].id}/>
 				))}
     </>
   )

@@ -3,7 +3,7 @@ import "./GameList.css"
 import { Link } from 'react-router-dom'
 import GameCard from '../GameCard/GameCard'
 
-const GameList = ({matchs, day}) => {
+const GameList = ({matchs}) => {
 
   return (
     
@@ -11,7 +11,10 @@ const GameList = ({matchs, day}) => {
           <h2 className='gamelist__date'>Fase de Grupos - {matchs[0].local_date}</h2>
           <div className='gamelist__container2'>
             {matchs.map((match, i)=>(
-              <Link key={`${day}${i}`} className='gamelist__link' to={`/proximosjuegos/${day}/${i}`}>
+              <Link 
+                    key={`${matchs[i].matchday}${matchs[i].id}`} 
+                    className='gamelist__link' 
+                    to={`/proximosjuegos/${matchs[i].matchday}/${matchs[i].id}`}>
                 <GameCard matchs={match} />
               </Link>
             ))}

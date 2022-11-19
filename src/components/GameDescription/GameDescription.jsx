@@ -1,30 +1,33 @@
 import React, {useEffect, useState} from 'react'
-import './GameDescription.css'
-import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import HowToVoteIcon from '@mui/icons-material/HowToVote';
+import './GameDescription.css'
 
 const GameDescription = () => {
 
     const {gameDay, gameMatch} = useParams();
-    const [dayGame, setDayGame] = useState({
-        local_date:"",
-        home_flag:"",
-        home_team_en:"",
-        away_flag:"",
-        away_team_en:"",
-        group:"",
-    })
-
+    const [dayGame, setDayGame] = useState({})
 
     const getDayGame = async () => {
         try {
-            const data = await axios({method: "GET", url:'/matchs/bymatchday'});
-            setDayGame(data.data[gameDay][gameMatch])
+            const data = await axios({method: "GET", url:'/match/'+gameMatch});
+            let {local_date, home_flag, home_team_en, home_team_id, away_flag, away_team_en, away_team_id, group}=data.data.data[0]
+            setDayGame(
+                {
+                    local_date,
+                    home_flag,
+                    home_team_en,
+                    home_team_id,
+                    away_flag,
+                    away_team_en,
+                    away_team_id,
+                    group,
+                }
+            )
         } catch (error) {
             console.error(error)
         }
-
     }
 
     useEffect(() => {
@@ -41,7 +44,7 @@ const GameDescription = () => {
             </div>
             <div className='gamedescription__container--detail'>
                 <div className='gamedescription__flags--container'>
-                    <img className="gamedescription__flags" src={dayGame.home_flag} alt='bandera'/>
+                    <img className="gamedescription__flags" src={dayGame.home_flag} alt='bandera {dayGame.home_team_en}'/>
                     <span className='gamedescription__team--name'>{dayGame.home_team_en}</span>
                 </div>
                 <div className='group__detail'>
@@ -59,7 +62,7 @@ const GameDescription = () => {
                     <div className='gamedescription__names--container'>
                         <div className='gamedescription__names'>
                             <div className='gamedescription__team--name'>
-                                Italia
+                            {dayGame.home_team_en}
                             </div>
                             <div>
                                 70%
@@ -67,7 +70,7 @@ const GameDescription = () => {
                         </div>
                         <div className='gamedescription__names'>
                             <div className='gamedescription__team--name'>
-                                Alemania
+                            {dayGame.away_team_en}
                             </div>
                             <div>
                                 30%
