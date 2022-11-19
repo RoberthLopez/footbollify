@@ -6,11 +6,10 @@ const API='/matchs/bymatchday';
 
 const NextGames = () => {
   const games = useGetGames(API)
-  //console.log(games)
   return (
     <>
-        {games.map(matchs=>(
-					<GameList matchs={matchs} key={matchs.matchday} />
+        {games.map((matchs, i)=>(
+					<GameList matchs={matchs} key={matchs[0].id} day={i}/>
 				))}
     </>
   )

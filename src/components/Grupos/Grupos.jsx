@@ -1,7 +1,7 @@
+import { TheaterComedySharp } from '@mui/icons-material'
 import React from 'react'
 import "./Grupos.css"
 export const Grupos = ({group, team}) => {
-    console.log(team)
   return (
     <div className='group__container'>
         <h2>Grupo {group}</h2>
@@ -25,7 +25,7 @@ export const Grupos = ({group, team}) => {
         </div>
         {team && team.map((e)=>{
             return (
-                <div className='info__container'>
+                <div className='info__container' key={e.name_en}>
                     <div key={team.id} className="team__container">
                         <img className="flags__img" src={e.flag} alt="bandera" />
                         <span className='team__name'>{e.name_en}</span>

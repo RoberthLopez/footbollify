@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 .gamelist__date {
-    padding-left: 60px;
+  padding-left: 60px;
 }
 .gamelist__container2 {
   background-color: #8d1c3d;
@@ -14,4 +14,8 @@
   justify-self: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.gamelist__link {
+  text-decoration: none;
+  color: black;
 }
