@@ -21,7 +21,7 @@ const Register = (props) => {
         console.log(registerForm)
         axios({
           method: "POST",
-          url:"/signIn",
+          url:"/signup",
           data:{
             email: registerForm.email,
             password: registerForm.password

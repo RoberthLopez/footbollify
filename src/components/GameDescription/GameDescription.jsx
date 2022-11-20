@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import './GameDescription.css'
-import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import HowToVoteIcon from '@mui/icons-material/HowToVote';
+import './GameDescription.css'
 import { getPercentage, getPercentageTeamAway } from '../../utils/getPercentage';
 
 let homeVotes = 10;
@@ -24,13 +24,23 @@ const GameDescription = () => {
 
     const getDayGame = async () => {
         try {
-            const data = await axios({method: "GET", url:'/matchs/bymatchday'});
-            setDayGame(data.data[gameDay][gameMatch])
-            
+            const data = await axios({method: "GET", url:'/match/'+gameMatch});
+            let {local_date, home_flag, home_team_en, home_team_id, away_flag, away_team_en, away_team_id, group}=data.data.data[0]
+            setDayGame(
+                {
+                    local_date,
+                    home_flag,
+                    home_team_en,
+                    home_team_id,
+                    away_flag,
+                    away_team_en,
+                    away_team_id,
+                    group,
+                }
+            )
         } catch (error) {
             console.error(error)
         }
-
     }
 
     useEffect(() => {
@@ -47,7 +57,7 @@ const GameDescription = () => {
             </div>
             <div className='gamedescription__container--detail'>
                 <div className='gamedescription__flags--container'>
-                    <img className="gamedescription__flags" src={dayGame.home_flag} alt='bandera'/>
+                    <img className="gamedescription__flags" src={dayGame.home_flag} alt='bandera {dayGame.home_team_en}'/>
                     <span className='gamedescription__team--name'>{dayGame.home_team_en}</span>
                 </div>
                 <div className='group__detail'>
@@ -65,7 +75,7 @@ const GameDescription = () => {
                     <div className='gamedescription__names--container'>
                         <div className='gamedescription__names'>
                             <div className='gamedescription__team--name'>
-                                {dayGame.home_team_en}
+                            {dayGame.home_team_en}
                             </div>
                             <div>
                                 {getPercentage(homeVotes, awayVotes)}%
@@ -73,7 +83,7 @@ const GameDescription = () => {
                         </div>
                         <div className='gamedescription__names'>
                             <div className='gamedescription__team--name'>
-                                {dayGame.away_team_en}
+                            {dayGame.away_team_en}
                             </div>
                             <div>
                                 {getPercentageTeamAway(homeVotes, awayVotes)}%
