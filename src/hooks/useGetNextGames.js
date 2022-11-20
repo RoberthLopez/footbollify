@@ -3,16 +3,15 @@ import axios from 'axios';
 
 const useGetGames = (API) => {
     const [games, setGames]=useState([]);
-	useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await axios.get(API); //request
-                setGames(response.data);                
-            } catch (error) {
-                console.error(error)
-            }
-
+    const fetchData = async() => {
+        try {
+            const response = await axios.get(API); //request
+            setGames(response.data);                
+        } catch (error) {
+            console.error(error)
         }
+    }
+	useEffect(() => {
         fetchData();
     }, []);
   return games;

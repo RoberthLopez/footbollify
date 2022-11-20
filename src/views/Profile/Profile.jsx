@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from "axios";
 import '../../App.css';
+import VoteList from '../../components/VoteList/VoteList'
 
 function Profile(props) {
 
@@ -32,17 +33,21 @@ function Profile(props) {
     })}
     //end of new line 
 
+    useEffect(() => {
+      getData()
+
+    }, [])
+
     return (
         <div className="Profile">
-    
-            <p>To get your profile details: </p><button onClick={getData}>Click me</button>
             {profileData && <div>
                   <p>Profile name: {profileData.profile_name}</p>
                   <p>About me: {profileData.about_me}</p>
                   <p>Email: {profileData.email}</p>
+                  
                 </div>
             }
-    
+          <VoteList />
         </div>
       );
     }

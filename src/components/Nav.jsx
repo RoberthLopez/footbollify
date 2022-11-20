@@ -34,6 +34,8 @@ function ResponsiveAppBar(props) {
     })
     .then((response) => {
        props.token()
+       localStorage.removeItem('email')
+       localStorage.clear()
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -138,11 +140,23 @@ function ResponsiveAppBar(props) {
           <Box sx={{ flexGrow: 0 }}>
               
               {localStorage.getItem('token') ? 
-              <Button onClick={logMeOut}
-                        sx={{ marginLeft: "10px" }} 
-                        variant="contained">                
-                  Logout                               
-                </Button>
+              <>
+              <Link to="/profile" style={{textDecoration:"none"}}>
+                    <Button 
+                            sx={{ marginLeft: "auto" }} 
+                            variant="contained">
+                      Perfil
+                    </Button>
+              </Link>
+              <Link to="/" style={{textDecoration:"none"}}>
+                <Button onClick={logMeOut}
+                          sx={{ marginLeft: "10px" }} 
+                          variant="contained">                
+                    Logout                               
+                  </Button>
+                </Link>
+              </>
+              
               : <div>
                   <Link to="/login" style={{textDecoration:"none"}}>
                     <Button 

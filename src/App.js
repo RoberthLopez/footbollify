@@ -37,8 +37,8 @@ function App() {
             <Nav token={removeToken}/>
             <Routes>
               <Route path='/' element={<HomePage />}/>
-              <Route path='/login' element={<Login />}/>
-              <Route path='/register' element={<Register />}/>
+              <Route path='/login' element={<Login setToken={setToken} />}/>
+              <Route path='/register' element={<Register setToken={setToken} />}/>
               <Route path='/proximosjuegos' element={<NextGames />} />
               <Route path='/estadisticas' element={<MyStats />} />
               <Route path='/proximosjuegos/:gameDay/:gameMatch' element={<GameDescription />} />

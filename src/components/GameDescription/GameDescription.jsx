@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import './GameDescription.css'
@@ -11,16 +11,8 @@ let awayVotes = 10;
 const GameDescription = () => {
 
     const {gameDay, gameMatch} = useParams();
-    const [dayGame, setDayGame] = useState({
-        local_date:"",
-        home_flag:"",
-        home_team_en:"",
-        away_flag:"",
-        away_team_en:"",
-        group:"",
-    })
-
-
+    const [dayGame, setDayGame] = useState({})
+    const [vote, setVote] = useState(undefined)
 
     const getDayGame = async () => {
         try {
@@ -47,6 +39,39 @@ const GameDescription = () => {
       getDayGame()
 
     }, [])
+
+    const voting = async () => {
+        let {home_flag, home_team_en, home_team_id, away_flag, away_team_en, away_team_id}=dayGame
+        axios({
+          method: "POST",
+          url:"/vote",
+          data:{
+                    home_flag,
+                    home_team_en,
+                    home_team_id,
+                    away_flag,
+                    away_team_en,
+                    away_team_id,
+                    'match_id':gameMatch,
+                    'vote':vote,
+           }
+        })
+        .then((response) => {
+          console.log(response)
+        }).catch((error) => {
+          if (error.response) {
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+            }
+        })
+      }
+
+    const handleClick = (team) =>{
+        setVote(team)
+        console.log(team)
+        voting()
+    }
     
   return (
     <div className='gamedescription__container'>
@@ -65,7 +90,7 @@ const GameDescription = () => {
                     <span>Fase de grupos - Grupo {dayGame.group}</span>
                 </div>
                 <div className='gamedescription__flags--container'>
-                    <img className="gamedescription__flags" src={dayGame.away_flag} alt='bandera'/>
+                    <img className="gamedescription__flags" src={dayGame.away_flag} alt='bandera {dayGame.away_team_en}'/>
                     <span className='gamedescription__team--name'>{dayGame.away_team_en}</span>
                 </div>
             </div>
@@ -95,10 +120,14 @@ const GameDescription = () => {
                     </div>
                     <div className='vote__container'>
                         <div className='vote__container--inner'>
-                            <HowToVoteIcon fontSize="large" className='vote__icon'/>
+                            <Link onClick={()=>{handleClick(dayGame.home_team_id)}}>
+                                <HowToVoteIcon fontSize="large" className='vote__icon'/>
+                            </Link>
                         </div>
                         <div className='vote__container--inner'>
-                            <HowToVoteIcon fontSize="large" className='md-48'/>
+                            <Link onClick={()=>{handleClick(dayGame.away_team_id)}}>
+                                <HowToVoteIcon fontSize="large" className='md-48'/>
+                            </Link>
                         </div>
                     </div>
                 </div>

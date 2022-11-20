@@ -29,6 +29,7 @@ const Register = (props) => {
         })
         .then((response) => {
           props.setToken(response.data.access_token)
+          localStorage.setItem('email',registerForm.email)
         }).catch((error) => {
           if (error.response) {
             console.log(error.response)

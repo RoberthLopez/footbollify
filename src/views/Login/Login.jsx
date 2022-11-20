@@ -28,6 +28,7 @@ export const Login = (props) => {
         })
         .then((response) => {
           props.setToken(response.data.access_token)
+          localStorage.setItem('email',loginForm.email)
         }).catch((error) => {
           if (error.response) {
             console.log(error.response)
