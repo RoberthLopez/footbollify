@@ -3,6 +3,10 @@ import './GameDescription.css'
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { getPercentage, getPercentageTeamAway } from '../../utils/getPercentage';
+
+let homeVotes = 10;
+let awayVotes = 10;
 
 const GameDescription = () => {
 
@@ -17,10 +21,12 @@ const GameDescription = () => {
     })
 
 
+
     const getDayGame = async () => {
         try {
             const data = await axios({method: "GET", url:'/matchs/bymatchday'});
             setDayGame(data.data[gameDay][gameMatch])
+            
         } catch (error) {
             console.error(error)
         }
@@ -59,23 +65,23 @@ const GameDescription = () => {
                     <div className='gamedescription__names--container'>
                         <div className='gamedescription__names'>
                             <div className='gamedescription__team--name'>
-                                Italia
+                                {dayGame.home_team_en}
                             </div>
                             <div>
-                                70%
+                                {getPercentage(homeVotes, awayVotes)}%
                             </div>
                         </div>
                         <div className='gamedescription__names'>
                             <div className='gamedescription__team--name'>
-                                Alemania
+                                {dayGame.away_team_en}
                             </div>
                             <div>
-                                30%
+                                {getPercentageTeamAway(homeVotes, awayVotes)}%
                             </div>
                         </div>
                     </div>
                     <div className='background__bar'>
-                        <div className='front__bar'/>
+                        <div className='front__bar'style={{width:`${getPercentage(homeVotes, awayVotes)}%`}}/>
                     </div>
                     <div className='vote__container'>
                         <div className='vote__container--inner'>
