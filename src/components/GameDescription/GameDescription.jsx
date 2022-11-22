@@ -69,7 +69,6 @@ const GameDescription = () => {
 
     const handleClick = (team) =>{
         setVote(team)
-        console.log(team)
         if (vote){
             voting()
         }
