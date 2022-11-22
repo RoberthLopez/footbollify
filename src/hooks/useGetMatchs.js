@@ -1,12 +1,12 @@
 import { useEffect,useState } from "react";
 import axios from 'axios';
 
-const useGetGames = (API) => {
-    const [games, setGames]=useState([]);
+const useGetMatchs = (API) => {
+    const [matchs, setMatchs]=useState([]);
     const fetchData = async() => {
         try {
             const response = await axios.get(API); //request
-            setGames(response.data);                
+            setMatchs(response.data.data);               
         } catch (error) {
             console.error(error)
         }
@@ -14,7 +14,7 @@ const useGetGames = (API) => {
 	useEffect(() => {
         fetchData();
     }, []);
-  return games;
+  return matchs;
 }
 
-export default useGetGames
+export default useGetMatchs
