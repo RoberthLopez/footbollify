@@ -14,10 +14,6 @@ const NextGames = () => {
     obj[data.matchday].push(data);
   }
 
-  useEffect(() => {
-    console.log(Object.values(obj))
-  }, [])
-
   return (
     <>
         {Object.values(obj).map((matchs, i)=>(
