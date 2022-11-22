@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
@@ -10,6 +10,8 @@ import "./Register.css"
   
 
 const Register = (props) => {
+
+    const navigate = useNavigate()
 
     const [registerForm, setRegisterForm] = useState({
         email: "",
@@ -30,6 +32,7 @@ const Register = (props) => {
         .then((response) => {
           props.setToken(response.data.access_token)
           localStorage.setItem('email',registerForm.email)
+          navigate('/profile')
         }).catch((error) => {
           if (error.response) {
             console.log(error.response)

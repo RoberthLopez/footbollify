@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
@@ -9,6 +9,8 @@ import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import "./Login.css"
 
 export const Login = (props) => {
+
+    const navigate = useNavigate()
 
     const [loginForm, setloginForm] = useState({
         email: "",
@@ -29,6 +31,7 @@ export const Login = (props) => {
         .then((response) => {
           props.setToken(response.data.access_token)
           localStorage.setItem('email',loginForm.email)
+          navigate('/profile')
         }).catch((error) => {
           if (error.response) {
             console.log(error.response)
