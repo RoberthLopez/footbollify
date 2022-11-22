@@ -8,7 +8,6 @@ import NextGames from './views/NextGames/NextGames';
 import Profile from './views/Profile/Profile';
 import NotFound from './views/NotFound/NotFound';
 import MyStats from './views/MyStats/MyStats';
-import Vote from './views/Vote/Vote';
 import useToken from './hooks/useToken';
 import GameDescription from './components/GameDescription/GameDescription';
 import './App.css';
@@ -42,14 +41,14 @@ function App() {
               <Route path='/proximosjuegos' element={<NextGames />} />
               <Route path='/estadisticas' element={<MyStats />} />
               <Route path='/proximosjuegos/:gameDay/:gameMatch' element={<GameDescription />} />
-              <Route path='/vote' element={<Vote />}/>
+              <Route path="/groups" element={<Groups />} />
               {!token && token!=="" ?  //Si no esta logeado, y quiere entrar a profile
                 (<Route path="/profile" element={<Login setToken={setToken}/>}/>)  //pide login
               : (
                   <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
                 )}
               <Route path="*" element={<NotFound />} />
-              <Route path="/groups" element={<Groups />} />
+              
             </Routes>
             
         </div>

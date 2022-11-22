@@ -24,7 +24,7 @@ const Groups = () => {
   return (
     <>
         {apiData && apiData.map((e) => {
-            return <Grupos key={e.id}group={e.group} team={e.teams}/>
+            return <Grupos key={e._id} group={e.group} teams={e.teams}/>
         })}
     </>
   )

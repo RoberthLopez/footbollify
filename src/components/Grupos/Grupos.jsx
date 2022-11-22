@@ -1,7 +1,7 @@
-import { TheaterComedySharp } from '@mui/icons-material'
-import React from 'react'
-import "./Grupos.css"
-export const Grupos = ({group, team}) => {
+import React from 'react';
+import TeamInfo from '../TeamInfo/TeamInfo';
+import "./Grupos.css";
+export const Grupos = ({group, teams}) => {
   return (
     <div className='group__container'>
         <h2>Grupo {group}</h2>
@@ -23,24 +23,9 @@ export const Grupos = ({group, team}) => {
                 <span className='data__data span__header'>DG</span>
             </div>         
         </div>
-        {team && team.map((e)=>{
+        {teams && teams.map((team)=>{
             return (
-                <div className='info__container' key={e.name_en}>
-                    <div key={team.id} className="team__container">
-                        <img className="flags__img" src={e.flag} alt="bandera" />
-                        <span className='team__name'>{e.name_en}</span>
-                    </div>
-                    <div className='data__container'>
-                        <span className='data__data'>{e.pts}</span>
-                        <span className='data__data'>{e.mp}</span>
-                        <span className='data__data'>{e.w}</span>
-                        <span className='data__data'>{e.l}</span>
-                        <span className='data__data'>{e.d}</span>
-                        <span className='data__data'>{e.gf}</span>
-                        <span className='data__data'>{e.ga}</span>
-                         <span className='data__data'>{e.gd}</span>
-                    </div>
-                </div>
+                <TeamInfo key={team.team_id} team={team} />
             )
         })}
     </div>
