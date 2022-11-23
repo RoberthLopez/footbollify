@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import GameList from '../../components/GameList/GameList'
 import useGetMatchs from '../../hooks/useGetMatchs';
 
