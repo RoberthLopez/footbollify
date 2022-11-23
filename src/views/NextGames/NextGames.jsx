@@ -1,32 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import GameList from '../../components/GameList/GameList'
 import useGetMatchs from '../../hooks/useGetMatchs';
 
 const API='/matchs';
 const NextGames = () => {
-  const games = useGetMatchs(API)
   
-  let obj2 = {};
-  for (let data of games) {
-    // if empty, creates a array
-    obj2[data.finished] = obj2[data.finished] || [];
-    // add data in that array
-    obj2[data.finished].push(data);
-  }
+  const games = useGetMatchs(API)
+  //console.log(games.filter(game => game.finished==='FALSE'))
+  const arr = games.filter(game => game.finished==='FALSE')
+  //console.log(arr)
 
-  let obj = {};
-  for (let data of obj2['FALSE']) {
-    // if empty, creates a array
-    obj[data.matchday] = obj[data.matchday] || [];
-    // add data in that array
-    obj[data.matchday].push(data);
-  }
+  const groupByMatchday = arr.reduce((group, match) => {
+    const { matchday } = match;
+    group[matchday] = group[matchday] ?? [];
+    group[matchday].push(match);
+    return group;
+  }, {});
+  //console.log(Object.values(groupByMatchday))
 
   return (
-    <>
-        {Object.values(obj).map((matchs, i)=>(
-					<GameList matchs={matchs} key={i}/>
-				))}
+    <> 
+      {Object.values(groupByMatchday).length>0 && <>
+      
+        {Object.values(groupByMatchday)
+        .map(
+          (matchs, i)=>(
+              <GameList matchs={matchs} key={i}/>
+            )
+          )
+        }
+
+      </>}
+        
     </>
   )
 }
