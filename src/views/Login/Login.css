@@ -5,57 +5,72 @@
   justify-content: center;
   align-items: center;
 }
-.container2 {
+.container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  background-color: "red";
   flex-direction: column;
   width: 400px;
   height: 450px;
-  border-radius: 8px;
-  background-color: #63a194;
+  border-radius: 5px;
+  background-color: #8a1538;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.479);
 }
-.title {
+.titleLogin {
   font-size: 36px;
   font-weight: bold;
-  color: #8d1c3d;
+  color: #ffffff;
   margin-bottom: 0;
 }
-.form {
+.formLogin {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
   width: 300px;
   gap: 10px;
   margin-top: 16px;
   padding: 16px;
 }
-.label {
-  color: #8d1c3d;
+.emailIconLogin {
+  position: absolute;
+  color: #464646;
+  top: 52px;
+  left: 48px;
+}
+.passwordIconLogin {
+  position: absolute;
+  color: #464646;
+  top: 4px;
+  left: 10px;
+}
+.labelLogin {
+  color: #ffffff;
   font-weight: bold;
 }
-.field {
+.fieldLogin {
   border-radius: 8px;
   color: black;
-  border-color: #8d1c3d;
-  background-color: whitesmoke;
+  border-color: #ffffff;
+  background-color: #8a1538;
   outline-style: none;
   height: 30px;
   font-size: 13px;
   width: 250px;
   text-align: center;
   border-style: none;
+  position: relative;
 }
 .text {
   color: white;
+  text-decoration: none;
 }
-.button {
-  color: white;
+.buttonLogin {
+  color: rgba(255, 255, 255, 0.897);
   border-radius: 10px;
   margin-top: 8px;
-  background-color: #8d2142b9;
+  background-color: #21418db9;
   padding: 5px;
   text-align: center;
   width: 150px;
@@ -63,8 +78,9 @@
   padding: 10px;
   transition: 0.5s;
   cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.479);
 }
-.button:hover {
-  background-color: #8d1c3d;
+.buttonLogin:hover {
+  background-color: #ffffff7b;
   transform: scale(1.1);
 }

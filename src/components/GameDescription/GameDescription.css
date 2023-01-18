@@ -1,0 +1,129 @@
+.gamedescription__container {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+  margin-top: 30px;
+}
+.gamedescription__container--1 {
+  width: 70%;
+  background-color: #8d1c3ede;
+  border-radius: 10px;
+  padding: 30px;
+}
+.gamedescription__header {
+  display: flex;
+  justify-content: space-between;
+}
+.gamedescription__date {
+  font-weight: bold;
+  padding-left: 10px;
+  text-align: center;
+}
+.gamedescription__container--detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #8d1c3d;
+  padding: 10px;
+  border-radius: 10px;
+  height: 100px;
+  margin-bottom: 30px;
+}
+.gamedescription__flags--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+}
+.gamedescription__flags {
+  width: 50px;
+}
+.group__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.gamedescription__probability {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #8d1c3ed2;
+  padding: 10px;
+  border-radius: 10px;
+  height: 280px;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+.gamedescription__probability--container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.background__bar {
+  background-color: blue;
+  width: 90%;
+  height: 30px;
+  border-radius: 50px;
+}
+.front__bar {
+  background-color: red;
+  height: 30px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.gamedescription__names--container {
+  width: 90%;
+  display: flex;
+  flex-direction: "row";
+  justify-content: space-between;
+}
+.gamedescription__names {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.vote__container {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+.vote__container--inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.vote__icon {
+  font-size: 50px;
+}
+.gamedescription__title {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+.gamedescription__team--name {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
+}
+
+@media (max-width: 425px) {
+  .gamedescription__container--detail {
+    flex-direction: column;
+    height: 250px;
+  }
+  .gamedescription__container--1 {
+    height: 670px;
+  }
+}

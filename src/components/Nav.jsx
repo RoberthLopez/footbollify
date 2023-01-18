@@ -9,12 +9,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
-const pages = ['Grupos', 'Proximos juegos'];
+const pages = [{name:'Grupos', path:"/groups"}, {name:'Proximos juegos', path:"/proximosjuegos"}, {name:'Estadisticas', path:"/estadisticas"}];
+console.log(pages.map((page)=> page.name ))
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -25,11 +27,28 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  function logMeOut() {
+    axios({
+      method: "POST",
+      url:"/logout",
+    })
+    .then((response) => {
+       props.token()
+       localStorage.removeItem('email')
+       localStorage.clear()
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })}
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <SportsSoccerIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -78,13 +97,15 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+                <Link key={page.path} to={page.path} style={{textDecoration:"none"}}>
+                  <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <SportsSoccerIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -101,31 +122,57 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link key={page.path} to={page.path} style={{textDecoration:"none"}}>
+                <Button
+                  key={page.name}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-              <Link to="/login" style={{textDecoration:"none"}}>
-                <Button sx={{ marginLeft: "auto" }} variant="contained">
-                  Logearse
-                </Button>
+              
+              {localStorage.getItem('token') ? 
+              <>
+              <Link to="/profile" style={{textDecoration:"none"}}>
+                    <Button 
+                            sx={{ marginLeft: "auto" }} 
+                            variant="contained">
+                      Perfil
+                    </Button>
               </Link>
-              <Link to="/register" style={{textDecoration:"none"}}>
-                <Button sx={{ marginLeft: "10px" }} variant="contained">                
-                  Registrarse                               
-                </Button>
-              </Link>
+              <Link to="/" style={{textDecoration:"none"}}>
+                <Button onClick={logMeOut}
+                          sx={{ marginLeft: "10px" }} 
+                          variant="contained">                
+                    Logout                               
+                  </Button>
+                </Link>
+              </>
+              
+              : <div>
+                  <Link to="/login" style={{textDecoration:"none"}}>
+                    <Button 
+                            sx={{ marginLeft: "auto" }} 
+                            variant="contained">
+                      Logearse
+                    </Button>
+                  </Link>
+                  <Link to="/register" style={{textDecoration:"none"}}>
+                    <Button 
+                            sx={{ marginLeft: "10px" }} 
+                            variant="contained">                
+                      Registrarse                               
+                    </Button>
+                  </Link>
+                </div>}
           </Box>
         </Toolbar>
       </Container>
